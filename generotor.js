@@ -307,7 +307,48 @@ names;
 
 
 
-実際の具体例
+// 実際の具体例
+
+// コメントのツリー構造を例にする
+
+// 子となっているコメントも含めて全てのコメントを1つの配列にして出力する
+
+// 上記と違って今回はClassでSymbol.iteratorを定義する
+
+
+class Comment {
+  constructor(content, children) {
+    this.content = content;
+    this.children = children;
+  }
+
+  *[Symbol.iterator]() {
+    yield this.content;
+    // generatorの中ではmapをつかってコレクションを1つずつ見ていくことはできない
+    // for of ループを使う必要がある
+    for (let child of this.children) {
+      yield* child;
+    }
+  }
+}
+
+const children = [
+  new Comment('賛成！！', []),
+  new Comment('反対！！', []),
+  new Comment('どちらでもない！！', [])
+];
+
+const tree = new Comment('非常にいい記事です', children);
+
+const values = [];
+for (let value of tree) {
+  values.push(value);
+}
+
+values
+
+
+
 
 
 
