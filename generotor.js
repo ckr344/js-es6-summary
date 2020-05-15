@@ -122,12 +122,11 @@ function* colors() {
   yield 'green';
 }
 
-const gen = colors();
-gen.next();
-gen.next();
-gen.next();
-gen.next();
-
+// const gen = colors();
+// gen.next();
+// gen.next();
+// gen.next();
+// gen.next();
 
 // for ofを組み合わせることでいい感じに順番に処理をやってくれる
 const myColors = [];
@@ -138,19 +137,104 @@ for (let color of colors()) {
 myColors
 
 // 上記の出力結果
-{"value":"red","done":false}
-{"value":"blue","done":false}
-{"value":"green","done":false}
-{"done":true}
-{"done":true}
+// {"value":"red","done":false}
+// {"value":"blue","done":false}
+// {"value":"green","done":false}
+// {"done":true}
+// {"done":true}
 ["red","blue","green"]
+
+
+
+// ーーーーーー
+
+
+
+const engineeringTeam = {
+  size: 3,
+  department: '開発部',
+  lead: '太郎',
+  manager: '花子',
+  engineer: '次郎'
+};
+
+// 自分の好きな順番で上の要素を出したい
+function* TeamIterator(team) {
+  yield team.lead;
+  yield team.manager;
+  yield team.engineer;
+}
+
+const names = [];
+for(let name of TeamIterator(engineeringTeam)) {
+  names.push(name);
+}
+
+names;
+
+// 上記の実行結果
+["太郎","花子","次郎"]
+// いままでは配列とかコレクションであればできたが、
+// generatorを使うことでオブジェクトの中身を自分の思うようにイテレートできるようにできる！
+
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
 
 // generator同士の連携と委譲
 
+// generatorのデリゲーション
+
+// 2つのチームのひとをまとめて取り出したい
+
+const testingTeam = {
+  lead: '典子',
+  tester: '隆氏'
+}
+
+const engineeringTeam = {
+  testingTeam,
+  size: 3,
+  department: '開発部',
+  lead: '太郎',
+  manager: '花子',
+  engineer: '次郎'
+};
+
+function* TeamIterator(team) {
+  yield team.lead;
+  yield team.manager;
+  yield team.engineer;
+  // ここで定義
+  const testingTeamGenerator = TestingTeamIterator(team.testingTeam);
+  yield* testingTeamGenerator;
+  // yieldに*をつける
+}
+
+function* TestingTeamIterator(team) {
+  yield team.lead;
+  yield team.tester;
+}
+
+const names = [];
+
+for(let name of TeamIterator(engineeringTeam)) {
+  names.push(name);
+}
+
+names;
+
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+
 
 // generatorとSymbol.Iterator
+
+
 
 
 
