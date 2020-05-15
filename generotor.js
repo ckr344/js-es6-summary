@@ -235,13 +235,79 @@ names;
 // generatorとSymbol.Iterator
 
 
+// generator同士の連携と委譲 (generatorのデリゲーション) のややこしさを解消するものt
+
+
+// for of ループに直面したときになにをすればいいかを教えてくれる存在がSymbol.Iterator
+
+
+const testingTeam = {
+  lead: '典子',
+  tester: '隆氏',
+  // ここに定義
+  // [ ]でくくっているのは、動的なキーとなる
+  [Symbol.iterator]: function* () {
+    // teamからthisに変わる
+    // このオブジェクトの中のleadとtesterを見たいため
+    yield this.lead;
+    yield this.tester;
+  }
+}
+
+const engineeringTeam = {
+  testingTeam,
+  size: 3,
+  department: '開発部',
+  lead: '太郎',
+  manager: '花子',
+  engineer: '次郎',
+  [Symbol.iterator]: function* () {
+    yield this.lead;
+    yield this.manager;
+    yield this.engineer;
+    // ここで定義
+    // これを書くことによって、testingTeamのSymbol.iteratorがあるかどうかを探しに行く
+    yield* this.testingTeam;
+  }
+};
+
+// 消せる
+// function* TeamIterator(team) {
+//   yield team.lead;
+//   yield team.manager;
+//   yield team.engineer;
+//   // ここで定義
+//   // これを書くことによって、testingTeamのSymbol.iteratorがあるかどうかを探しに行く
+//   yield* team.testingTeam;
+// }
+
+// 消せる
+// function* TestingTeamIterator(team) {
+//   yield team.lead;
+//   yield team.tester;
+// }
+
+const names = [];
+
+// for ofはSymbol.iteratorを見に行く
+for(let name of engineeringTeam) {
+  names.push(name);
+}
+
+names;
 
 
 
 
 
 
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
+
+
+
+
+実際の具体例
 
 
 
