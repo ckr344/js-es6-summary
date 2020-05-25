@@ -14,7 +14,8 @@ Material-UIのサンプルコードと同じ
 Hook APIの使い方
 
 ①インストール
-　npm install --save @material-ui/styles
+// 　npm install --save @material-ui/styles
+// $ npm install --save @material-ui/core @material-ui/icons
 
 ②import
   import {createStyles, makeStyles} from "@material-ui/core/styles"
