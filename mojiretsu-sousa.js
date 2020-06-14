@@ -81,3 +81,26 @@ description.addEventListener('change', (event) => {
   const length = text.length
   currentLength.innerText = length
 })
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+
+// ④
+Number.prototype.toLocaleString()
+
+// 数値を言語依存の文字列に変換する
+
+// （例）
+// 数値を3桁区切りにしたい
+
+const price = 19800
+const localePrice = price.toLocaleString()
+
+console.log("The price of product is ¥" + localePrice)
+// The price of product is ¥19,800
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+
