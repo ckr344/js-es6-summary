@@ -104,3 +104,29 @@ console.log("The price of product is ¥" + localePrice)
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
+// ⑤
+String.prototype.replace()
+
+// パターンにマッチした文字列を置き換えする
+
+const str = "たぬきのかたたたき";
+const result = str.replace(/た/g, "");
+
+console.log(result)
+// expected output ぬきのかき
+
+
+// （例）
+// inputタグで入力した改行を改行コードに置き換えて出力する
+
+const returnCodeToBrTag = (text) => {
+  return text.replace(/\r?\n/g, '<br>');
+}
+
+// \r?\n → \rか\nを含む
+
+const outputDescription = () => {
+  const description = document.getElementById('description').value
+  const formattedDescription = returnCodeToBrTag(description)
+  document.getElementById('result').innerHTML = formattedDescription
+}
