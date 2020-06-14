@@ -17,8 +17,7 @@
 
 // ①
 
-map()
-// 新しい配列を作る
+map()  // 新しい配列を作る
 
 // 配列をイテレートする
 // 要素1つずつに処理を行う
@@ -50,9 +49,7 @@ console.log(objectArray)
 
 
 // ②
-filter()
-
-// 条件に合う要素を抽出
+filter()  // 条件に合う要素を抽出
 
 // 配列をイテレートする
 // 条件がtrueの要素のみ返す
@@ -74,3 +71,31 @@ console.log(result[])
 
 console.log(result[0].text)
 // "fuga"
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+
+// ③
+
+findIndex()  // 要素の何番目かを知る
+
+// 配列をイテレートする
+// 条件がtrueの要素が「何番目なのか」を返す
+
+const objectArray = [
+  { id: "hoge", text: "fuga" },
+  { id: "foo", text: "bar" },
+  { id: "fiz", text: "buzz" }
+];
+
+const index = objectArray.findIndex(object => {
+  return object.id === 'hoge'
+})
+// 条件式を書いている
+
+console.log(index, objectArray[index])
+// 0, { id: "hoge", text: "fuga" }
+
+console.log(index, objectArray[index].text)
+// 0, "fuga"
