@@ -99,3 +99,39 @@ console.log(index, objectArray[index])
 
 console.log(index, objectArray[index].text)
 // 0, "fuga"
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+
+// 番外編
+
+test()  // マッチする文字列かを判定する
+
+// 正規表現を使う
+// マッチする → true を返す
+// マッチしない → false を返す
+
+const torahack = "torahack"
+const charahack = "charahack"
+const regex = RegExp("tora*")
+
+console.log(regex.test(torahack))  // true
+console.log(regex.test(charahack))  // false
+
+console.log(/chara*/.test(charahack)) // true
+// 正規表現を直接記述
+
+
+// 構文
+{/* <正規表現>.test(<テスト対象>) */}
+
+
+// （例）
+const isTora = regex.test(torahack)
+
+if (isTora) {
+  console.log("私はトラハックです")
+} else {
+  console.log("私はトラハックではありません")
+}
