@@ -44,3 +44,33 @@ const objectArray = Object.keys(obj).map(key => {
 });
 
 console.log(objectArray)
+
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+
+// ②
+filter()
+
+// 条件に合う要素を抽出
+
+// 配列をイテレートする
+// 条件がtrueの要素のみ返す
+// 配列を作る
+
+const objectArray = [
+  { id: "hoge", text: "fuga" },
+  { id: "foo", text: "bar" },
+  { id: "fiz", text: "buzz" }
+];
+
+const result = objectArray.filter(object => {
+  return object.id === "hoge"
+})
+// 条件式を書いている
+
+console.log(result[])
+// Array [{ id: "hoge", text: "fuga" }]
+
+console.log(result[0].text)
+// "fuga"
