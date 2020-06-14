@@ -59,7 +59,25 @@ console.log("After:", formattedDate)
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
-// // ③
-// String.length
+// ③
+String.length
 
-// // 文字列の長さ
+// 文字列の長さ（＝文字数）を表す
+
+const str = 'torahack';
+
+console.log(str.length);
+// expected output: 8
+
+
+// （例）
+// 文字数に制限をかける
+
+const description = document.getElementById('description')
+const currentLength = document.getElementById('current-length')
+
+description.addEventListener('change', (event) => {
+  const text = event.target.value
+  const length = text.length
+  currentLength.innerText = length
+})
