@@ -84,3 +84,25 @@ for (let i = 0; i < 5; i++) {
   console.log(sum);
 }
 
+
+// #4-1 map(arrow)
+for (let i = 0; i < 5; i++) {
+  sum = 0;
+  console.time('map(arrow)');
+  arr.map(v => sum += v);
+  console.timeEnd('map(arrow)');
+  console.log(sum);
+}
+
+
+// #4-2 map(pre-defined function)
+for (let i = 0; i < 5; i++) {
+  sum = 0;
+  console.time('map(function)');
+  arr.map(addSum);
+  console.timeEnd('map(function)');
+  console.log(sum);
+}
+
+
+
