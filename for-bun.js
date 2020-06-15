@@ -105,4 +105,24 @@ for (let i = 0; i < 5; i++) {
 }
 
 
+// #5-1 Typed for
+for (let j = 0; j < 5; j++) {
+  sum = 0;
+  console.time('Typed for');
+  for (let i = 0; i < len; i=(i+1) | 0) {
+    sum += arr[i];
+  }
+  console.timeEnd('Typed for');
+  console.log(sum);
+}
+// 「| 0」は数値型であることを定義
+// 事前に型を宣言するから一番早くなると言われている
 
+
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+
+// 結果
+// ブラウザでばらつきがでる
+// Typedが安定
+// map()は遅い
