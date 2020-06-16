@@ -71,3 +71,20 @@ const headerModule = (() => {
 
 
 // 【番外編】
+// 即時関数でasyncを使う
+
+(async() => {
+
+  const url = 'https.....'
+
+  const json = await fetch(url)
+    .then(res => {
+      return res.json()
+    }).catch(error => {
+      return null
+    });
+
+  console.log(json.login)
+
+})()
+
