@@ -65,4 +65,4 @@ Element.addEventListener("change", event => {
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
-// 詳細はトラハックさんのgithubへ・・・
+// 詳細はトラハックさんのgithubを確認！
